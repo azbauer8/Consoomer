@@ -1,28 +1,28 @@
 import Image from "next/image"
+import { Star } from "lucide-react"
 
-export default function ContentCard({
-  item,
-}: {
-  item: {
-    title: string
-    overview: string
-    poster_path: string
-  }
-}) {
+import { TMDBContent } from "@/lib/tmdb"
+import { formatDate } from "@/lib/utils"
+
+export default function ContentCard({ item }: { item: TMDBContent }) {
   return (
-    <div className="min-w-44 overflow-hidden rounded-lg bg-accent sm:min-w-64">
+    <div className="flex gap-2 rounded-lg border bg-accent p-2">
       <Image
         src={item.poster_path}
         alt={item.title}
-        className="aspect-[256/384] object-cover"
-        height={384}
-        width={256}
+        className="rounded-lg"
+        height={192}
+        width={128}
       />
-      <div className="space-y-2 p-2">
-        <h3 className="text-lg font-semibold">{item.title}</h3>
-        <p className="line-clamp-3 text-sm text-foreground-muted">
-          {item.overview}
-        </p>
+      <div className="flex-1 space-y-2">
+        <h2 className="text-2xl font-bold">{item.title}</h2>
+        <div className="flex items-center justify-between">
+          <p>{formatDate(item.release_date)}</p>
+          <p className="flex items-center gap-1">
+            <Star className="size-4 fill-yellow-500 text-yellow-500" />
+            {item.vote_average.toFixed(1)}
+          </p>
+        </div>
       </div>
     </div>
   )

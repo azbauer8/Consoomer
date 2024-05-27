@@ -42,7 +42,7 @@ export default function RootLayout({
       >
         <Providers>
           <Header />
-          <main className="p-4 sm:p-8">{children}</main>
+          <main className="container p-4">{children}</main>
         </Providers>
       </body>
     </html>

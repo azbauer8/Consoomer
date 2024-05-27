@@ -8,11 +8,11 @@ const options = {
 
 export async function getTMDBContentList(
   type: "movie" | "tv",
-  list: "popular" | "upcoming" | "top_rated",
+  list: "popular" | "upcoming" | "top_rated" | "on_the_air",
   page: number = 1
 ) {
   const response: TMDBContentList = await fetch(
-    `https://api.themoviedb.org/3/${type}/${list}?language=en&page=${page}`,
+    `https://api.themoviedb.org/3/${type}/${list}?page=${page}`,
     options
   )
     .then((response) => response.json())
@@ -40,7 +40,7 @@ export async function getTMDBMovies(
 }
 
 export async function getTMDBShows(
-  list: "popular" | "upcoming" | "top_rated",
+  list: "popular" | "upcoming" | "top_rated" | "on_the_air",
   page: number = 1
 ) {
   const shows = await getTMDBContentList("tv", list, page)
@@ -66,7 +66,7 @@ type TMDBContentList = {
   results: TMDBContent[]
 }
 
-type TMDBContent = {
+export type TMDBContent = {
   id: number
   overview: string
   popularity: number
