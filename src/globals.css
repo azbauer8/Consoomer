@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply relative min-w-0 border-border;
+  }
+  body {
+    @apply min-h-dvh;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-balance;
+  }
+  p {
+    @apply text-pretty;
+  }
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+    --foreground-muted: 240 5% 65%;
+    --accent: 0 0% 9%;
+    --hover: 0 0% 10%;
+    --border: 0 0% 14.9%;
+
+    --radius: 0.45rem;
+  }
+}
